@@ -15,4 +15,13 @@ public struct Constants {
         static let imageSize = "w185"
     }
     
+    public struct Keys {
+        static let id = "id"
+        static let title = "title"
+        static let posterPath = "poster_path"
+        static let releaseDate = "release_date"
+        static let rating = "vote_average"
+        static let overview = "overview"
+    }
+    
 }

@@ -25,12 +25,12 @@ public class Movie {
     public let overview: String
     
     public init(properties: [String: AnyObject]) {
-        id = properties[""] as! Int
-        title = properties[""] as! String
-        posterPath = properties[""] as! String
-        releaseDate = properties[""] as! String
-        rating = properties[""] as! Int
-        overview = properties[""] as! String
+        id = properties[Constants.Keys.id] as! Int
+        title = properties[Constants.Keys.title] as! String
+        posterPath = properties[Constants.Keys.posterPath] as! String
+        releaseDate = properties[Constants.Keys.releaseDate] as! String
+        rating = properties[Constants.Keys.rating] as! Int
+        overview = properties[Constants.Keys.overview] as! String
     }
     
     public func getFullPosterPath() -> String {
