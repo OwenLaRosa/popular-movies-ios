@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MoviesController.swift
 //  Popular Movies
 //
 //  Created by Owen LaRosa on 6/24/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MoviesController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
