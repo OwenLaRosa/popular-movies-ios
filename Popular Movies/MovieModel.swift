@@ -8,6 +8,13 @@
 
 import Foundation
 
+public class MovieManager {
+    
+    public static let sharedInstance = MovieManager()
+    public var movies = [Movie]()
+    
+}
+
 public class Movie {
     
     public let id: Int
