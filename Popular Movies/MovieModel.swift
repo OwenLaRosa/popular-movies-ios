@@ -21,7 +21,7 @@ public class Movie {
     public let title: String
     public let posterPath: String
     public let releaseDate: String
-    public let rating: Int
+    public let rating: Double
     public let overview: String
     
     public init(properties: [String: AnyObject]) {
@@ -29,7 +29,7 @@ public class Movie {
         title = properties[Constants.Keys.title] as! String
         posterPath = properties[Constants.Keys.posterPath] as! String
         releaseDate = properties[Constants.Keys.releaseDate] as! String
-        rating = properties[Constants.Keys.rating] as! Int
+        rating = properties[Constants.Keys.rating] as! Double
         overview = properties[Constants.Keys.overview] as! String
     }
     
