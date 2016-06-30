@@ -9,6 +9,9 @@
 import UIKit
 
 class MoviesController: UIViewController {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    private var movies: [Movie]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,20 @@ class MoviesController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
+extension MoviesController: UICollectionViewDataSource {
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+}
