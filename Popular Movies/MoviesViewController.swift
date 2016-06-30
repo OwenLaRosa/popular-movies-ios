@@ -16,6 +16,22 @@ class MoviesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            TMDBClient.sharedInstance().searchMoviesWithMethod("movie/popular", parameters: "") {movies, error in
+                if error != nil {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.showAlert()
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.movies = movies
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +80,11 @@ extension MoviesController: UICollectionViewDataSource {
             }
         }
         return cell
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Oops!", message: "There was an error using the network.", preferredStyle: .Alert)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
 }
