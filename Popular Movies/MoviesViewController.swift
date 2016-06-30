@@ -11,7 +11,7 @@ import UIKit
 class MoviesController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    private var movies: [Movie]!
+    private var movies = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class MoviesController: UIViewController {
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.movies = movies
+                        self.movies = movies!
                         self.collectionView.reloadData()
                     }
                 }

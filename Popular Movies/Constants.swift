@@ -11,7 +11,7 @@ import Foundation
 public struct Constants {
     
     public struct PosterConstants {
-        static let posterBasePath = "http://image.tmdb.org/t/p/"
+        static let posterBasePath = "https://image.tmdb.org/t/p/"
         static let imageSize = "w185"
     }
     

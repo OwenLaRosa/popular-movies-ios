@@ -18,7 +18,7 @@ public enum TMDBErrors: ErrorType {
 public class TMDBClient {
     
     private struct RequestKeys {
-        static let baseUrl = "http://api.themoviedb.org/3/"
+        static let baseUrl = "https://api.themoviedb.org/3/"
         static let apiKey = ""
     }
     
