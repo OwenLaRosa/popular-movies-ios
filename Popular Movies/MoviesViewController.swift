@@ -17,6 +17,8 @@ class MoviesController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        collectionView.delegate = self
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             TMDBClient.sharedInstance().searchMoviesWithMethod("movie/popular", parameters: "") {movies, error in
                 if error != nil {
@@ -38,6 +40,9 @@ class MoviesController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
 }
 
 extension MoviesController: UICollectionViewDataSource {
@@ -85,6 +90,20 @@ extension MoviesController: UICollectionViewDataSource {
     func showAlert() {
         let alert = UIAlertController(title: "Oops!", message: "There was an error using the network.", preferredStyle: .Alert)
         presentViewController(alert, animated: true, completion: nil)
+    }
+    
+}
+
+extension MoviesController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = view.frame.width/2
+        let height = width * 2
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
     }
     
 }
