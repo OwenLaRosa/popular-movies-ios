@@ -35,7 +35,35 @@ extension MoviesController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("movieCollectionViewCell", forIndexPath: indexPath) as! MovieCollectionViewCell
+        
+        let movie = movies[indexPath.row]
+        
+        // set movie title
+        cell.label.text = movie.title
+        
+        // check cache for the image
+        if let image = ImageCache().imageWithIdentifier(movie.posterPath) {
+            cell.imageView.image = image
+        } else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                // perform network request on background queue
+                cell.dataTask = TMDBClient.sharedInstance().downloadImageAtLocation(movie.getFullPosterPath()) {data, error in
+                    if data != nil {
+                        guard let image = UIImage(data: data!) else {
+                            return
+                        }
+                        // add image to the cache
+                        ImageCache().storeImage(image, withIdentifier: movie.posterPath)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            // update UI on main queue
+                            cell.imageView.image = image
+                        }
+                    }
+                }
+            }
+        }
+        return cell
     }
     
 }
