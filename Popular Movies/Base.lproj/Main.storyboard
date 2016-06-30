@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="o8T-fH-e36">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2J5-y5-PMY" kind="show" id="9c7-wW-Xrj"/>
+                        <segue destination="2J5-y5-PMY" kind="relationship" relationship="rootViewController" id="7bx-qb-dnm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQv-kc-cL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,7 +25,7 @@
         <!--Popular Movies-->
         <scene sceneID="LMM-pX-p8o">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2J5-y5-PMY" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2J5-y5-PMY" customClass="MoviesController" customModule="Popular_Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cp5-QZ-3H6"/>
                         <viewControllerLayoutGuide type="bottom" id="N2B-iA-nta"/>
@@ -88,6 +88,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Popular Movies" id="vty-6z-5PN"/>
+                    <connections>
+                        <outlet property="collectionView" destination="9iP-YQ-i4O" id="lGr-CL-K3N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7T-B2-k0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
