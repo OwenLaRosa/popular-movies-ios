@@ -1,5 +1,5 @@
 //
-//  MoviesController.swift
+//  MoviesViewController.swift
 //  Popular Movies
 //
 //  Created by Owen LaRosa on 6/24/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoviesController: UIViewController {
+class MoviesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     private var movies = [Movie]()
@@ -41,11 +41,17 @@ class MoviesController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if segue.identifier == "showDetail" {
+            let destination = segue.destinationViewController as! DetailViewController
+            destination.movie = sender as! Movie
+        }
+    }
     
 }
 
-extension MoviesController: UICollectionViewDataSource {
+extension MoviesViewController: UICollectionViewDataSource {
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -94,7 +100,17 @@ extension MoviesController: UICollectionViewDataSource {
     
 }
 
-extension MoviesController: UICollectionViewDelegateFlowLayout {
+extension MoviesViewController: UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let movie = movies[indexPath.row]
+        
+        performSegueWithIdentifier("showDetail", sender: movie)
+    }
+    
+}
+
+extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let width = view.frame.width/2

@@ -17,6 +17,7 @@
 		5A8560031D1D7F50001F2D79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8560011D1D7F50001F2D79 /* LaunchScreen.storyboard */; };
 		5AA05F041D1DD22400260827 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA05F031D1DD22400260827 /* MovieModel.swift */; };
 		5AA05F061D1DD3EA00260827 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA05F051D1DD3EA00260827 /* Constants.swift */; };
+		5AE02F301D5FD5A70022AB6C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE02F2F1D5FD5A70022AB6C /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		5A8560041D1D7F50001F2D79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AA05F031D1DD22400260827 /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		5AA05F051D1DD3EA00260827 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5AE02F2F1D5FD5A70022AB6C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				5AA05F031D1DD22400260827 /* MovieModel.swift */,
 				5AA05F051D1DD3EA00260827 /* Constants.swift */,
 				5A855FFA1D1D7F50001F2D79 /* MoviesViewController.swift */,
+				5AE02F2F1D5FD5A70022AB6C /* DetailViewController.swift */,
 				5A591D741D25580E0006DB17 /* MovieCollectionViewCell.swift */,
 				5A855FFC1D1D7F50001F2D79 /* Main.storyboard */,
 				5A855FFF1D1D7F50001F2D79 /* Assets.xcassets */,
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE02F301D5FD5A70022AB6C /* DetailViewController.swift in Sources */,
 				5A4FE3191D22E67D009F7DF4 /* TMDBClient.swift in Sources */,
 				5AA05F041D1DD22400260827 /* MovieModel.swift in Sources */,
 				5A855FFB1D1D7F50001F2D79 /* MoviesViewController.swift in Sources */,

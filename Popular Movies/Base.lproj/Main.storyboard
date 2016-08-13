@@ -25,7 +25,7 @@
         <!--Popular Movies-->
         <scene sceneID="LMM-pX-p8o">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2J5-y5-PMY" customClass="MoviesController" customModule="Popular_Movies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2J5-y5-PMY" customClass="MoviesViewController" customModule="Popular_Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cp5-QZ-3H6"/>
                         <viewControllerLayoutGuide type="bottom" id="N2B-iA-nta"/>
@@ -93,11 +93,30 @@
                     <navigationItem key="navigationItem" title="Popular Movies" id="vty-6z-5PN"/>
                     <connections>
                         <outlet property="collectionView" destination="9iP-YQ-i4O" id="lGr-CL-K3N"/>
+                        <segue destination="iS7-2c-6G8" kind="show" identifier="showDetail" id="Uqq-C6-mwA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7T-B2-k0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="231" y="281"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="xkR-VQ-4Js">
+            <objects>
+                <viewController id="iS7-2c-6G8" customClass="DetailViewController" customModule="Popular_Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k7x-rk-dmT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hne-Ti-aRM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dre-1i-02o">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cmP-SU-A85" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="281"/>
         </scene>
     </scenes>
 </document>
