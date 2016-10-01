@@ -12,7 +12,7 @@ import UIKit
 /// https://github.com/udacity/ios-persistence-2.0
 class ImageCache {
     
-    fileprivate var inMemoryCache = NSCache()
+    fileprivate var inMemoryCache = NSCache<NSString, UIImage>()
     
     // MARK: - Retreiving images
     
@@ -26,7 +26,7 @@ class ImageCache {
         let path = pathForIdentifier(identifier!)
         
         // First try the memory cache
-        if let image = inMemoryCache.object(forKey: path) as? UIImage {
+        if let image  = inMemoryCache.object(forKey: NSString(string: path)) {
             return image
         }
         
@@ -45,7 +45,7 @@ class ImageCache {
         
         // If the image is nil, remove images from the cache
         if image == nil {
-            inMemoryCache.removeObject(forKey: path)
+            inMemoryCache.removeObject(forKey: NSString(string: path))
             
             do {
                 try FileManager.default.removeItem(atPath: path)
@@ -55,7 +55,7 @@ class ImageCache {
         }
         
         // Otherwise, keep the image in memory
-        inMemoryCache.setObject(image!, forKey: path)
+        inMemoryCache.setObject(image!, forKey: NSString(string: path))
         
         // And in documents directory
         let data = UIImagePNGRepresentation(image!)!

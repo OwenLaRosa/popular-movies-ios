@@ -86,19 +86,19 @@ open class TMDBClient {
     }
     
     /// Return data task for poster image download
-    open func downloadImageAtLocation(_ location: String, completionHandler: @escaping (_ imageData: Data?, _ error: Error?) -> Void) -> URLSessionTask! {
+    open func downloadImageAtLocation(_ location: String, completionHandler: @escaping (_ imgeData: Data?, _ error: Error?) -> Void) -> URLSessionTask! {
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
         guard let url = URL(string: location) else {
             completionHandler(nil, TMDBErrors.invalidUrlError)
             return nil
         }
-        let request = NSMutableURLRequest(url: url)
-        let task = session.dataTask(with: request, completionHandler: {data, response, error in
+        
+        let task = session.dataTask(with: url, completionHandler: {data, response, error in
             if error != nil {
-                completionHandler(imageData: nil, error: TMDBErrors.imageDownloadError)
+                completionHandler(nil, TMDBErrors.imageDownloadError)
             } else {
-                completionHandler(imageData: data, error: nil)
+                completionHandler(data, nil)
             }
         }) 
         task.resume()
