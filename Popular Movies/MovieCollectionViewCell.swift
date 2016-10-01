@@ -16,7 +16,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     
     /// Current data task for image download
-    var dataTask: NSURLSessionTask? {
+    var dataTask: URLSessionTask? {
         didSet {
             if let task = oldValue {
                 task.cancel()

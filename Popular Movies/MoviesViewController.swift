@@ -11,7 +11,7 @@ import UIKit
 class MoviesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    private var movies = [Movie]()
+    fileprivate var movies = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,14 +19,14 @@ class MoviesViewController: UIViewController {
         
         collectionView.delegate = self
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
             TMDBClient.sharedInstance().searchMoviesWithMethod("movie/popular", parameters: "") {movies, error in
                 if error != nil {
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         self.showAlert()
                     }
                 } else {
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         self.movies = movies!
                         self.collectionView.reloadData()
                     }
@@ -41,10 +41,10 @@ class MoviesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if segue.identifier == "showDetail" {
-            let destination = segue.destinationViewController as! DetailViewController
+            let destination = segue.destination as! DetailViewController
             destination.movie = sender as! Movie
         }
     }
@@ -53,18 +53,18 @@ class MoviesViewController: UIViewController {
 
 extension MoviesViewController: UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("movieCollectionViewCell", forIndexPath: indexPath) as! MovieCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
-        let movie = movies[indexPath.row]
+        let movie = movies[(indexPath as NSIndexPath).row]
         
         // set movie title
         cell.label.text = movie.title
@@ -73,7 +73,7 @@ extension MoviesViewController: UICollectionViewDataSource {
         if let image = ImageCache().imageWithIdentifier(movie.posterPath) {
             cell.imageView.image = image
         } else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
                 // perform network request on background queue
                 cell.dataTask = TMDBClient.sharedInstance().downloadImageAtLocation(movie.getFullPosterPath()) {data, error in
                     if data != nil {
@@ -82,7 +82,7 @@ extension MoviesViewController: UICollectionViewDataSource {
                         }
                         // add image to the cache
                         ImageCache().storeImage(image, withIdentifier: movie.posterPath)
-                        dispatch_async(dispatch_get_main_queue()) {
+                        DispatchQueue.main.async {
                             // update UI on main queue
                             cell.imageView.image = image
                         }
@@ -94,31 +94,31 @@ extension MoviesViewController: UICollectionViewDataSource {
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Oops!", message: "There was an error using the network.", preferredStyle: .Alert)
-        presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Oops!", message: "There was an error using the network.", preferredStyle: .alert)
+        present(alert, animated: true, completion: nil)
     }
     
 }
 
 extension MoviesViewController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let movie = movies[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = movies[(indexPath as NSIndexPath).row]
         
-        performSegueWithIdentifier("showDetail", sender: movie)
+        performSegue(withIdentifier: "showDetail", sender: movie)
     }
     
 }
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width/2
         let height = width * 2
         return CGSize(width: width, height: height)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     

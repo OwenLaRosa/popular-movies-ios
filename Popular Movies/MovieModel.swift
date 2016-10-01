@@ -8,21 +8,21 @@
 
 import Foundation
 
-public class MovieManager {
+open class MovieManager {
     
-    public static let sharedInstance = MovieManager()
-    public var movies = [Movie]()
+    open static let sharedInstance = MovieManager()
+    open var movies = [Movie]()
     
 }
 
-public class Movie {
+open class Movie {
     
-    public let id: Int
-    public let title: String
-    public let posterPath: String
-    public let releaseDate: String
-    public let rating: Double
-    public let overview: String
+    open let id: Int
+    open let title: String
+    open let posterPath: String
+    open let releaseDate: String
+    open let rating: Double
+    open let overview: String
     
     public init(properties: [String: AnyObject]) {
         id = properties[Constants.Keys.id] as! Int
@@ -33,7 +33,7 @@ public class Movie {
         overview = properties[Constants.Keys.overview] as! String
     }
     
-    public func getFullPosterPath() -> String {
+    open func getFullPosterPath() -> String {
         return "\(Constants.PosterConstants.posterBasePath)\(Constants.PosterConstants.imageSize)/\(posterPath)"
     }
     

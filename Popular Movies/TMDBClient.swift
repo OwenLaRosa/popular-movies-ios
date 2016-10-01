@@ -8,21 +8,21 @@
 
 import Foundation
 
-public enum TMDBErrors: ErrorType {
-    case ParsingError
-    case MovieSearchError
-    case ImageDownloadError
-    case InvalidUrlError
+public enum TMDBErrors: Error {
+    case parsingError
+    case movieSearchError
+    case imageDownloadError
+    case invalidUrlError
 }
 
-public class TMDBClient {
+open class TMDBClient {
     
-    private struct RequestKeys {
+    fileprivate struct RequestKeys {
         static let baseUrl = "https://api.themoviedb.org/3/"
-        static let apiKey = ""
+        static let apiKey = "f5bff038fbd62a3ccfedf06c2315d655"
     }
     
-    private struct JSONKeys {
+    fileprivate struct JSONKeys {
         static let id = "id"
         static let title = "title"
         static let posterPath = "poster_path"
@@ -32,15 +32,15 @@ public class TMDBClient {
     }
     
     /// Build TMDB search url from method and parameters
-    private func buildUrl(method method: String, parameters: String) -> String {
+    fileprivate func buildUrl(method: String, parameters: String) -> String {
         return "\(RequestKeys.baseUrl)\(method)?api_key=\(RequestKeys.apiKey)\(parameters)"
     }
     
     /// Convert JSON data into Movie array
-    private func getMoviesFromJSON(jsonData: NSData) throws -> [Movie] {
+    fileprivate func getMoviesFromJSON(_ jsonData: Data) throws -> [Movie] {
         var movies = [Movie]()
         do {
-            if let jsonObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments) as? [String: AnyObject], jsonArray = jsonObject["results"] as? [[String: AnyObject]] {
+            if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String: AnyObject], let jsonArray = jsonObject["results"] as? [[String: AnyObject]] {
                 for i in jsonArray {
                     var properties = [String: AnyObject]()
                     properties[JSONKeys.id] = i[JSONKeys.id]
@@ -54,53 +54,53 @@ public class TMDBClient {
                 }
             }
         } catch {
-            throw TMDBErrors.ParsingError
+            throw TMDBErrors.parsingError
         }
         return movies
     }
     
     /// Return data task for movie search
-    public func searchMoviesWithMethod(method: String, parameters: String, completionHandler: (movies: [Movie]?, error: ErrorType?) -> Void) -> NSURLSessionTask! {
-        let session = NSURLSession.sharedSession()
-        guard let url = NSURL(string: buildUrl(method: method, parameters: parameters)) else {
-            completionHandler(movies: nil, error: TMDBErrors.InvalidUrlError)
+    open func searchMoviesWithMethod(_ method: String, parameters: String, completionHandler: @escaping (_ movies: [Movie]?, _ error: Error?) -> Void) -> URLSessionTask! {
+        let session = URLSession.shared
+        guard let url = URL(string: buildUrl(method: method, parameters: parameters)) else {
+            completionHandler(nil, TMDBErrors.invalidUrlError)
             return nil
         }
-        let request = NSURLRequest(URL: url)
+        let request = URLRequest(url: url)
         
-        let task = session.dataTaskWithRequest(request) { data, response, error in
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
             if error != nil {
-                completionHandler(movies: nil, error: TMDBErrors.MovieSearchError)
+                completionHandler(nil, TMDBErrors.movieSearchError)
             } else {
                 do {
                     let movies = try self.getMoviesFromJSON(data!)
-                    completionHandler(movies: movies, error: nil)
+                    completionHandler(movies, nil)
                 } catch {
-                    completionHandler(movies: nil, error: error)
+                    completionHandler(nil, error)
                 }
             }
-        }
+        }) 
         task.resume()
         
         return task
     }
     
     /// Return data task for poster image download
-    public func downloadImageAtLocation(location: String, completionHandler: (imageData: NSData?, error: ErrorType?) -> Void) -> NSURLSessionTask! {
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let session = NSURLSession(configuration: configuration)
-        guard let url = NSURL(string: location) else {
-            completionHandler(imageData: nil, error: TMDBErrors.InvalidUrlError)
+    open func downloadImageAtLocation(_ location: String, completionHandler: @escaping (_ imageData: Data?, _ error: Error?) -> Void) -> URLSessionTask! {
+        let configuration = URLSessionConfiguration.default
+        let session = URLSession(configuration: configuration)
+        guard let url = URL(string: location) else {
+            completionHandler(nil, TMDBErrors.invalidUrlError)
             return nil
         }
-        let request = NSMutableURLRequest(URL: url)
-        let task = session.dataTaskWithRequest(request) {data, response, error in
+        let request = NSMutableURLRequest(url: url)
+        let task = session.dataTask(with: request, completionHandler: {data, response, error in
             if error != nil {
-                completionHandler(imageData: nil, error: TMDBErrors.ImageDownloadError)
+                completionHandler(imageData: nil, error: TMDBErrors.imageDownloadError)
             } else {
                 completionHandler(imageData: data, error: nil)
             }
-        }
+        }) 
         task.resume()
         
         return task
