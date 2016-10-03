@@ -35,7 +35,9 @@ class DetailViewController: UIViewController {
         
         titleLabel.text = movie.title
         // TODO: show movie poster
-        yearLabel.text = movie.releaseDate
+        // only show the year, 4 characters
+        let yearIndex = movie.releaseDate.index(movie.releaseDate.startIndex, offsetBy: 4)
+        yearLabel.text = movie.releaseDate.substring(to: yearIndex)
         ratingTextView.text = "⋆ \(movie.rating)/10"
         descriptionLabel.text = movie.overview
     }
