@@ -154,16 +154,24 @@
                                             <color key="titleColor" red="0.0" green="0.53725490200000003" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99Y-u8-1Il">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="kQb-fS-r4o" firstAttribute="leading" secondItem="imB-iw-afm" secondAttribute="leading" id="4Tr-Bc-EPy"/>
                                     <constraint firstItem="cmF-AE-fcc" firstAttribute="top" secondItem="AJE-9j-h34" secondAttribute="bottom" constant="16" id="6lT-6G-Scm"/>
+                                    <constraint firstItem="99Y-u8-1Il" firstAttribute="trailing" secondItem="N4y-sY-xCJ" secondAttribute="trailingMargin" constant="-16" id="BtR-Ir-Y3m"/>
+                                    <constraint firstItem="99Y-u8-1Il" firstAttribute="top" secondItem="cmF-AE-fcc" secondAttribute="bottom" constant="8" symbolic="YES" id="Cff-Ea-Xaz"/>
                                     <constraint firstItem="BPC-qa-Tqb" firstAttribute="top" secondItem="cmF-AE-fcc" secondAttribute="top" id="HRI-8u-F6o"/>
                                     <constraint firstItem="EYB-fi-pul" firstAttribute="top" secondItem="N4y-sY-xCJ" secondAttribute="top" constant="672" id="MiV-Lk-xav"/>
                                     <constraint firstAttribute="bottom" secondItem="EYB-fi-pul" secondAttribute="bottom" constant="-128" id="Pco-L4-grI"/>
                                     <constraint firstItem="AJE-9j-h34" firstAttribute="leading" secondItem="EYB-fi-pul" secondAttribute="leading" id="PqK-qx-I3X"/>
                                     <constraint firstItem="AJE-9j-h34" firstAttribute="top" secondItem="N4y-sY-xCJ" secondAttribute="top" id="W0F-dz-cJ7"/>
-                                    <constraint firstItem="cmF-AE-fcc" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" constant="24" id="a7K-jN-r2n"/>
+                                    <constraint firstItem="cmF-AE-fcc" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" constant="16" id="a7K-jN-r2n"/>
+                                    <constraint firstItem="99Y-u8-1Il" firstAttribute="leading" secondItem="cmF-AE-fcc" secondAttribute="leading" id="abm-2T-vYl"/>
                                     <constraint firstItem="kQb-fS-r4o" firstAttribute="top" secondItem="BPC-qa-Tqb" secondAttribute="bottom" constant="16" id="fYL-YE-fEB"/>
                                     <constraint firstItem="BPC-qa-Tqb" firstAttribute="leading" secondItem="cmF-AE-fcc" secondAttribute="trailing" constant="24" id="fvH-lF-Q8D"/>
                                     <constraint firstItem="kQb-fS-r4o" firstAttribute="leading" secondItem="BPC-qa-Tqb" secondAttribute="leading" id="g65-vf-qJ7"/>
