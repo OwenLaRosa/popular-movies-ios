@@ -150,6 +150,9 @@
                                         <state key="normal" title="Favorite">
                                             <color key="titleColor" red="0.0" green="0.53725490200000003" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="favoriteButtonTapped:" destination="iS7-2c-6G8" eventType="touchUpInside" id="hvd-Nb-KsT"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99Y-u8-1Il">
                                         <constraints>
@@ -190,6 +193,14 @@
                             <constraint firstItem="N4y-sY-xCJ" firstAttribute="top" secondItem="k7x-rk-dmT" secondAttribute="bottom" id="vDA-p8-E67"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="99Y-u8-1Il" id="F1Q-aR-tcQ"/>
+                        <outlet property="favoriteButton" destination="imB-iw-afm" id="hac-iW-c32"/>
+                        <outlet property="posterImageView" destination="cmF-AE-fcc" id="lCA-uh-dGZ"/>
+                        <outlet property="ratingTextView" destination="kQb-fS-r4o" id="Dyk-8s-Act"/>
+                        <outlet property="titleLabel" destination="JhO-ts-Pw7" id="CLk-UR-xHb"/>
+                        <outlet property="yearLabel" destination="BPC-qa-Tqb" id="g3H-dM-djR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmP-SU-A85" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
