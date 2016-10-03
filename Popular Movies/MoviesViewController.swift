@@ -17,6 +17,9 @@ class MoviesViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // set title color, only affects this view controller
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(colorLiteralRed: 0.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)]
+        
         collectionView.delegate = self
         
         DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {

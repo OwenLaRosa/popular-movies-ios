@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let primaryTint = UIColor(colorLiteralRed: 0.0, green: 153.0/255.0, blue: 153.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = primaryTint
+        // remove shadow: http://stackoverflow.com/questions/11084331/how-do-i-disable-the-navigation-bar-shadow-in-ios-6-for-navigation-bars-with-cus
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
         return true
     }
 
