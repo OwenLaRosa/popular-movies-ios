@@ -131,16 +131,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPC-qa-Tqb">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="104" id="Sl3-yh-PFf"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋆ 10/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQb-fS-r4o">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="8V7-fn-Nnz"/>
+                                            <constraint firstAttribute="height" constant="21" id="p7q-1Q-ZSf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
@@ -164,10 +161,12 @@
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="BPC-qa-Tqb" firstAttribute="trailing" secondItem="JhO-ts-Pw7" secondAttribute="trailing" id="0G3-f4-HDC"/>
                                     <constraint firstItem="99Y-u8-1Il" firstAttribute="top" secondItem="cmF-AE-fcc" secondAttribute="bottom" constant="8" symbolic="YES" id="0aR-tq-fxz"/>
                                     <constraint firstItem="cmF-AE-fcc" firstAttribute="top" secondItem="JhO-ts-Pw7" secondAttribute="bottom" constant="16" id="2Ys-I1-yoB"/>
-                                    <constraint firstItem="kQb-fS-r4o" firstAttribute="leading" secondItem="imB-iw-afm" secondAttribute="leading" id="4Tr-Bc-EPy"/>
+                                    <constraint firstItem="BPC-qa-Tqb" firstAttribute="leading" secondItem="kQb-fS-r4o" secondAttribute="leading" id="9uW-s3-Ep2"/>
                                     <constraint firstItem="JhO-ts-Pw7" firstAttribute="top" secondItem="N4y-sY-xCJ" secondAttribute="top" constant="16" id="A2O-K2-44U"/>
+                                    <constraint firstItem="kQb-fS-r4o" firstAttribute="top" secondItem="BPC-qa-Tqb" secondAttribute="bottom" constant="16" id="BFL-UY-Fe5"/>
                                     <constraint firstItem="99Y-u8-1Il" firstAttribute="trailing" secondItem="N4y-sY-xCJ" secondAttribute="trailingMargin" constant="-16" id="BtR-Ir-Y3m"/>
                                     <constraint firstItem="cmF-AE-fcc" firstAttribute="leading" secondItem="JhO-ts-Pw7" secondAttribute="leading" id="Dfc-MK-75Z"/>
                                     <constraint firstItem="JhO-ts-Pw7" firstAttribute="centerX" secondItem="N4y-sY-xCJ" secondAttribute="centerX" id="Fk6-BL-y1m"/>
@@ -176,12 +175,11 @@
                                     <constraint firstItem="JhO-ts-Pw7" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" constant="16" id="NbA-MB-xsN"/>
                                     <constraint firstAttribute="trailing" secondItem="JhO-ts-Pw7" secondAttribute="trailing" constant="16" id="P9w-iH-mdY"/>
                                     <constraint firstAttribute="bottom" secondItem="EYB-fi-pul" secondAttribute="bottom" constant="-128" id="Pco-L4-grI"/>
-                                    <constraint firstItem="kQb-fS-r4o" firstAttribute="top" secondItem="BPC-qa-Tqb" secondAttribute="bottom" constant="16" id="fYL-YE-fEB"/>
-                                    <constraint firstItem="kQb-fS-r4o" firstAttribute="leading" secondItem="BPC-qa-Tqb" secondAttribute="leading" id="g65-vf-qJ7"/>
+                                    <constraint firstItem="kQb-fS-r4o" firstAttribute="leading" secondItem="imB-iw-afm" secondAttribute="leading" id="aYl-NH-8Wu"/>
+                                    <constraint firstItem="BPC-qa-Tqb" firstAttribute="top" secondItem="cmF-AE-fcc" secondAttribute="top" id="e0a-Y1-eMO"/>
                                     <constraint firstItem="imB-iw-afm" firstAttribute="leading" secondItem="cmF-AE-fcc" secondAttribute="trailing" constant="24" id="hq3-1c-B6w"/>
-                                    <constraint firstItem="imB-iw-afm" firstAttribute="top" secondItem="kQb-fS-r4o" secondAttribute="bottom" constant="16" id="iwt-BR-f3p"/>
-                                    <constraint firstItem="kQb-fS-r4o" firstAttribute="trailing" secondItem="BPC-qa-Tqb" secondAttribute="trailing" id="pky-PF-rxa"/>
-                                    <constraint firstItem="cmF-AE-fcc" firstAttribute="top" secondItem="BPC-qa-Tqb" secondAttribute="top" id="y5H-IA-TL4"/>
+                                    <constraint firstItem="BPC-qa-Tqb" firstAttribute="trailing" secondItem="kQb-fS-r4o" secondAttribute="trailing" id="t5a-lv-ZDj"/>
+                                    <constraint firstItem="imB-iw-afm" firstAttribute="top" secondItem="kQb-fS-r4o" secondAttribute="bottom" constant="16" id="vum-ny-YEG"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
