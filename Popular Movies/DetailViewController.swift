@@ -44,6 +44,12 @@ class DetailViewController: UIViewController {
         descriptionLabel.text = movie.overview
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.frame.origin.y = -(navigationController?.navigationBar.frame.size.height)!
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         

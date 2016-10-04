@@ -90,7 +90,7 @@
                     <navigationItem key="navigationItem" title="Popular Movies" id="vty-6z-5PN"/>
                     <connections>
                         <outlet property="collectionView" destination="9iP-YQ-i4O" id="lGr-CL-K3N"/>
-                        <segue destination="iS7-2c-6G8" kind="showDetail" identifier="showDetail" action="showViewController:sender:" id="Uqq-C6-mwA"/>
+                        <segue destination="iS7-2c-6G8" kind="show" identifier="showDetail" id="Uqq-C6-mwA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7T-B2-k0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -182,12 +182,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JhO-ts-Pw7" firstAttribute="leading" secondItem="Dre-1i-02o" secondAttribute="leadingMargin" id="42z-sr-wwm"/>
+                            <constraint firstItem="JhO-ts-Pw7" firstAttribute="leading" secondItem="Dre-1i-02o" secondAttribute="leadingMargin" constant="32" id="42z-sr-wwm"/>
                             <constraint firstAttribute="trailing" secondItem="N4y-sY-xCJ" secondAttribute="trailing" id="6Be-Ay-H7t"/>
                             <constraint firstItem="N4y-sY-xCJ" firstAttribute="leading" secondItem="Dre-1i-02o" secondAttribute="leading" id="JRI-xm-Hz3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JhO-ts-Pw7" secondAttribute="trailing" constant="-8" id="KtP-Sr-ocV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JhO-ts-Pw7" secondAttribute="trailing" constant="32" id="KtP-Sr-ocV"/>
                             <constraint firstItem="N4y-sY-xCJ" firstAttribute="top" secondItem="JhO-ts-Pw7" secondAttribute="bottom" constant="8" symbolic="YES" id="gxQ-91-a2o"/>
-                            <constraint firstItem="JhO-ts-Pw7" firstAttribute="top" secondItem="k7x-rk-dmT" secondAttribute="bottom" id="lRs-TT-tBj"/>
+                            <constraint firstItem="JhO-ts-Pw7" firstAttribute="top" secondItem="k7x-rk-dmT" secondAttribute="bottom" constant="-26" id="lRs-TT-tBj"/>
                             <constraint firstItem="N4y-sY-xCJ" firstAttribute="bottom" secondItem="Hne-Ti-aRM" secondAttribute="top" id="yCM-nB-jfu"/>
                         </constraints>
                     </view>
