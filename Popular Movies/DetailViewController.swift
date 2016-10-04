@@ -57,6 +57,10 @@ class DetailViewController: UIViewController {
         scrollView.contentSize.width = UIScreen.main.bounds.width
     }
     
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
     }
     

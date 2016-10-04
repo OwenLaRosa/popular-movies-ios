@@ -179,13 +179,21 @@
                                 <color key="textColor" red="0.0" green="0.53725490200000003" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fp-aH-kKd">
+                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="iS7-2c-6G8" eventType="touchUpInside" id="3f2-O2-Ov2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JhO-ts-Pw7" firstAttribute="leading" secondItem="Dre-1i-02o" secondAttribute="leadingMargin" constant="32" id="42z-sr-wwm"/>
                             <constraint firstAttribute="trailing" secondItem="N4y-sY-xCJ" secondAttribute="trailing" id="6Be-Ay-H7t"/>
+                            <constraint firstItem="5Fp-aH-kKd" firstAttribute="leading" secondItem="Dre-1i-02o" secondAttribute="leadingMargin" id="A1V-fb-Bg4"/>
                             <constraint firstItem="N4y-sY-xCJ" firstAttribute="leading" secondItem="Dre-1i-02o" secondAttribute="leading" id="JRI-xm-Hz3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JhO-ts-Pw7" secondAttribute="trailing" constant="32" id="KtP-Sr-ocV"/>
+                            <constraint firstItem="5Fp-aH-kKd" firstAttribute="centerY" secondItem="JhO-ts-Pw7" secondAttribute="centerY" id="e5g-Eb-RVE"/>
                             <constraint firstItem="N4y-sY-xCJ" firstAttribute="top" secondItem="JhO-ts-Pw7" secondAttribute="bottom" constant="8" symbolic="YES" id="gxQ-91-a2o"/>
                             <constraint firstItem="JhO-ts-Pw7" firstAttribute="top" secondItem="k7x-rk-dmT" secondAttribute="bottom" constant="-26" id="lRs-TT-tBj"/>
                             <constraint firstItem="N4y-sY-xCJ" firstAttribute="bottom" secondItem="Hne-Ti-aRM" secondAttribute="top" id="yCM-nB-jfu"/>
