@@ -28,6 +28,8 @@ class DetailViewController: UIViewController {
     // brief overview of the movie
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     var movie: Movie!
     
     override func viewDidLoad() {
@@ -40,6 +42,13 @@ class DetailViewController: UIViewController {
         yearLabel.text = movie.releaseDate.substring(to: yearIndex)
         ratingTextView.text = "⋆ \(movie.rating)/10"
         descriptionLabel.text = movie.overview
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // prevent horizontal scrolling
+        scrollView.contentSize.width = UIScreen.main.bounds.width
     }
     
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
