@@ -12,6 +12,7 @@ public enum TMDBErrors: Error {
     case parsingError
     case movieSearchError
     case trailerError
+    case reviewError
     case imageDownloadError
     case invalidUrlError
 }
@@ -79,6 +80,27 @@ open class TMDBClient {
         return trailers
     }
     
+    
+    /// Convert JSON data into review array
+    fileprivate func getReviewsFromJSON(_ jsonData: Data) throws -> [Review] {
+        var reviews = [Review]()
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String: AnyObject], let jsonArray = jsonObject["results"] as? [[String: AnyObject]] {
+                for i in jsonArray {
+                    var properties = [String: AnyObject]()
+                    properties[Constants.ReviewKeys.author] = i[Constants.ReviewKeys.author]
+                    properties[Constants.ReviewKeys.content] = i[Constants.ReviewKeys.content]
+                    let review = Review(properties: properties)
+                    reviews.append(review)
+                }
+            }
+        } catch {
+            throw TMDBErrors.parsingError
+        }
+        
+        return reviews
+    }
+    
     /// Return data task for movie search
     open func searchMoviesWithMethod(_ method: String, parameters: String, completionHandler: @escaping (_ movies: [Movie]?, _ error: Error?) -> Void) -> URLSessionTask! {
         let session = URLSession.shared
@@ -131,6 +153,32 @@ open class TMDBClient {
         return task
     }
     
+    /// Get reviews for movie id
+    open func getReviewsForMovieId(id: Int, completionHandler: @escaping (_ reviews: [Review]?, _ error: Error?) -> Void) -> URLSessionTask! {
+        let session = URLSession.shared
+        let urlString = "(RequestKeys.baseUrl)movie/\(id)/reviews?api_key=\(RequestKeys.apiKey)"
+        guard let url = URL(string: urlString) else {
+            completionHandler(nil, TMDBErrors.invalidUrlError)
+            return nil
+        }
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request, completionHandler: {data, response, error in
+            if error != nil {
+                completionHandler(nil, TMDBErrors.reviewError)
+            } else {
+                do {
+                    let reviews = try self.getReviewsFromJSON(data!)
+                    completionHandler(reviews, nil)
+                } catch {
+                    completionHandler(nil, error)
+                }
+            }
+        })
+        task.resume()
+        
+        return task
+    }
+    
     /// Return data task for poster image download
     open func downloadImageAtLocation(_ location: String, completionHandler: @escaping (_ imgeData: Data?, _ error: Error?) -> Void) -> URLSessionTask! {
         let configuration = URLSessionConfiguration.default
@@ -151,6 +199,8 @@ open class TMDBClient {
         
         return task
     }
+    
+    
     
     class func sharedInstance() -> TMDBClient {
         
