@@ -24,4 +24,10 @@ public struct Constants {
         static let overview = "overview"
     }
     
+    public struct TrailerKeys {
+        static let id = "id"
+        static let key = "key"
+        static let name = "name"
+    }
+    
 }
