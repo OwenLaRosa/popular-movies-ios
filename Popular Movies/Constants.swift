@@ -15,7 +15,7 @@ public struct Constants {
         static let imageSize = "w185"
     }
     
-    public struct Keys {
+    public struct MovieKeys {
         static let id = "id"
         static let title = "title"
         static let posterPath = "poster_path"
