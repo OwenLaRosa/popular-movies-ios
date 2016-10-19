@@ -30,4 +30,9 @@ public struct Constants {
         static let name = "name"
     }
     
+    public struct ReviewKeys {
+        static let author = "author"
+        static let content = "content"
+    }
+    
 }
