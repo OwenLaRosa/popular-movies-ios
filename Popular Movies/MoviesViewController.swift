@@ -38,6 +38,30 @@ class MoviesViewController: UIViewController {
         }
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if view.frame.size.width > view.frame.size.height {
+            // landscape mode, no status bar
+            navigationController?.navigationBar.frame.origin.y = 0
+        } else {
+            // portrait mode, account for status bar height
+            navigationController?.navigationBar.frame.origin.y = 20
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print(navigationController?.navigationBar.frame.origin.y)
+        print(navigationController?.navigationBar.frame.size.height)
+        navigationController?.navigationBar.frame.origin.y = -(navigationController?.navigationBar.frame.size.height)!
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
