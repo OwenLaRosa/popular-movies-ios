@@ -11,6 +11,7 @@ import Foundation
 public enum TMDBErrors: Error {
     case parsingError
     case movieSearchError
+    case trailerError
     case imageDownloadError
     case invalidUrlError
 }
@@ -59,6 +60,25 @@ open class TMDBClient {
         return movies
     }
     
+    /// Convert JSON data into Trailer array
+    fileprivate func getTrailersFromJSON(_ jsonData: Data) throws -> [TrailerModel] {
+        var trailers = [TrailerModel]()
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String: AnyObject], let jsonArray = jsonObject["results"] as? [[String: AnyObject]] {
+                for i in jsonArray {
+                    var properties = [String: AnyObject]()
+                    properties[Constants.TrailerKeys.key] = i[Constants.TrailerKeys.key]
+                    properties[Constants.TrailerKeys.name] = i[Constants.TrailerKeys.name]
+                    let trailer = TrailerModel(properties: properties)
+                    trailers.append(trailer)
+                }
+            }
+        } catch {
+            throw TMDBErrors.parsingError
+        }
+        return trailers
+    }
+    
     /// Return data task for movie search
     open func searchMoviesWithMethod(_ method: String, parameters: String, completionHandler: @escaping (_ movies: [Movie]?, _ error: Error?) -> Void) -> URLSessionTask! {
         let session = URLSession.shared
@@ -85,6 +105,32 @@ open class TMDBClient {
         return task
     }
     
+    /// Get trailers and return data task
+    open func getTrailersForMovieId(id: Int, completionHandler: @escaping (_ trailers: [TrailerModel]?, _ error: Error?) -> Void) -> URLSessionTask! {
+        let session = URLSession.shared
+        let urlString = "\(RequestKeys.baseUrl)movie/\(id)/videos?api_key=\(RequestKeys.apiKey)"
+        guard let url = URL(string: urlString) else {
+            completionHandler(nil, TMDBErrors.invalidUrlError)
+            return nil
+        }
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request, completionHandler: {data, response, error in
+            if error != nil {
+                completionHandler(nil, TMDBErrors.trailerError)
+            } else {
+                do {
+                    let trailers = try self.getTrailersFromJSON(data!)
+                    completionHandler(trailers, nil)
+                } catch {
+                    completionHandler(nil, error)
+                }
+            }
+        })
+        task.resume()
+        
+        return task
+    }
+    
     /// Return data task for poster image download
     open func downloadImageAtLocation(_ location: String, completionHandler: @escaping (_ imgeData: Data?, _ error: Error?) -> Void) -> URLSessionTask! {
         let configuration = URLSessionConfiguration.default
@@ -100,7 +146,7 @@ open class TMDBClient {
             } else {
                 completionHandler(data, nil)
             }
-        }) 
+        })
         task.resume()
         
         return task
