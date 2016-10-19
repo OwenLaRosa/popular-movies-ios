@@ -32,6 +32,9 @@ class DetailViewController: UIViewController {
     
     var movie: Movie!
     
+    //
+    private var downloadTask: URLSessionTask!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +45,8 @@ class DetailViewController: UIViewController {
         yearLabel.text = movie.releaseDate.substring(to: yearIndex)
         ratingTextView.text = "⋆ \(movie.rating)/10"
         descriptionLabel.text = movie.overview
+        
+        downloadPoster()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +67,26 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+    }
+    
+    func downloadPoster() {
+        if let image = ImageCache().imageWithIdentifier(movie.posterPath) {
+            posterImageView.image = image
+        } else {
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+                self.downloadTask = TMDBClient.sharedInstance().downloadImageAtLocation(self.movie.getFullPosterPath()) {data, error in
+                    if data != nil {
+                        guard let image = UIImage(data: data!) else {
+                            return
+                        }
+                        ImageCache().storeImage(image, withIdentifier: self.movie.getFullPosterPath())
+                        DispatchQueue.main.async {
+                            self.posterImageView.image = image
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }
