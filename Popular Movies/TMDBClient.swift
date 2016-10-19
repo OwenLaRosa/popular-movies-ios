@@ -62,15 +62,15 @@ open class TMDBClient {
     }
     
     /// Convert JSON data into Trailer array
-    fileprivate func getTrailersFromJSON(_ jsonData: Data) throws -> [TrailerModel] {
-        var trailers = [TrailerModel]()
+    fileprivate func getTrailersFromJSON(_ jsonData: Data) throws -> [Trailer] {
+        var trailers = [Trailer]()
         do {
             if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String: AnyObject], let jsonArray = jsonObject["results"] as? [[String: AnyObject]] {
                 for i in jsonArray {
                     var properties = [String: AnyObject]()
                     properties[Constants.TrailerKeys.key] = i[Constants.TrailerKeys.key]
                     properties[Constants.TrailerKeys.name] = i[Constants.TrailerKeys.name]
-                    let trailer = TrailerModel(properties: properties)
+                    let trailer = Trailer(properties: properties)
                     trailers.append(trailer)
                 }
             }
@@ -128,7 +128,7 @@ open class TMDBClient {
     }
     
     /// Get trailers and return data task
-    open func getTrailersForMovieId(id: Int, completionHandler: @escaping (_ trailers: [TrailerModel]?, _ error: Error?) -> Void) -> URLSessionTask! {
+    open func getTrailersForMovieId(id: Int, completionHandler: @escaping (_ trailers: [Trailer]?, _ error: Error?) -> Void) -> URLSessionTask! {
         let session = URLSession.shared
         let urlString = "\(RequestKeys.baseUrl)movie/\(id)/videos?api_key=\(RequestKeys.apiKey)"
         guard let url = URL(string: urlString) else {

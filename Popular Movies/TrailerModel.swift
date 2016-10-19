@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class TrailerModel {
+open class Trailer {
     
     open let identifier: String
     open let key: String
