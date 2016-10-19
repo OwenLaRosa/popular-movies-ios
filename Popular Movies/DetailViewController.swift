@@ -58,7 +58,9 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        downloadTask.cancel()
+        if downloadTask != nil {
+            downloadTask.cancel()
+        }
     }
     
     override func viewDidLayoutSubviews() {
