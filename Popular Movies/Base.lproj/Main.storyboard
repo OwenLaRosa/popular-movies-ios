@@ -166,13 +166,31 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ibZ-Ne-jIe">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrailerCollectionViewCell" id="ibZ-Ne-jIe" customClass="TrailerCollectionViewCell" customModule="Popular_Movies" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="81"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="144" height="81"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PyR-ny-QT9"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwF-8N-y28">
+                                                            <state key="normal" title="Play"/>
+                                                        </button>
+                                                    </subviews>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstItem="DwF-8N-y28" firstAttribute="centerY" secondItem="PyR-ny-QT9" secondAttribute="centerY" id="6D0-Do-dQF"/>
+                                                    <constraint firstItem="DwF-8N-y28" firstAttribute="centerX" secondItem="ibZ-Ne-jIe" secondAttribute="centerX" id="DAM-Y6-zlY"/>
+                                                    <constraint firstItem="PyR-ny-QT9" firstAttribute="leading" secondItem="ibZ-Ne-jIe" secondAttribute="leading" id="YGF-j2-kOz"/>
+                                                    <constraint firstItem="DwF-8N-y28" firstAttribute="centerX" secondItem="PyR-ny-QT9" secondAttribute="centerX" id="eu8-WU-QyB"/>
+                                                    <constraint firstItem="PyR-ny-QT9" firstAttribute="top" secondItem="ibZ-Ne-jIe" secondAttribute="top" id="ngM-zl-UFq"/>
+                                                    <constraint firstItem="DwF-8N-y28" firstAttribute="centerY" secondItem="ibZ-Ne-jIe" secondAttribute="centerY" id="pz1-C6-SO7"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="playButton" destination="DwF-8N-y28" id="rxi-f8-qKg"/>
+                                                    <outlet property="thumbnail" destination="PyR-ny-QT9" id="Fbd-aW-A77"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
