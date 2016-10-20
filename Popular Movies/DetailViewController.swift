@@ -146,6 +146,29 @@ extension DetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrailerCollectionViewCell", for: indexPath) as! TrailerCollectionViewCell
         
+        let trailer = trailers[indexPath.row]
+        
+        if let image = ImageCache().imageWithIdentifier(trailer.thumbnailUrl) {
+            cell.thumbnail.image = image
+        } else {
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+                // perform network request on background queue
+                cell.dataTask = TMDBClient.sharedInstance().downloadImageAtLocation(trailer.thumbnailUrl) {data, error in
+                    if data != nil {
+                        guard let image = UIImage(data: data!) else {
+                            return
+                        }
+                        // add image to the cache
+                        ImageCache().storeImage(image, withIdentifier: trailer.thumbnailUrl)
+                        DispatchQueue.main.async {
+                            // update UI on main queue
+                            cell.thumbnail.image = image
+                        }
+                    }
+                }
+            }
+        }
+        
         return cell
     }
     

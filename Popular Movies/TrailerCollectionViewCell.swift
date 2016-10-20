@@ -13,4 +13,12 @@ class TrailerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     
+    var dataTask: URLSessionTask? {
+        didSet {
+            if let task = oldValue {
+                task.cancel()
+            }
+        }
+    }
+    
 }

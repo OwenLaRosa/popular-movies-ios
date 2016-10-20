@@ -20,4 +20,8 @@ open class Trailer {
         name = properties[Constants.TrailerKeys.name] as? String ?? ""
     }
     
+    var thumbnailUrl: String {
+        return "https://img.youtube.com/vi/\(key)/0.jpg"
+    }
+    
 }
