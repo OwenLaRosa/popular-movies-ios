@@ -30,10 +30,12 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var trailerCollectionView: UICollectionView!
+    
     var movie: Movie!
-    var trailers: [Trailer]!
+    var trailers = [Trailer]()
     var trailerDownloadTask: URLSessionTask?
-    var reviews: [Review]!
+    var reviews = [Review]()
     var reviewDownloadTask: URLSessionTask?
     var client = TMDBClient()
     
@@ -109,10 +111,13 @@ class DetailViewController: UIViewController {
     func downloadTrailers() {
         DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
             self.trailerDownloadTask = self.client.getTrailersForMovieId(id: self.movie.id) {trailers, error in
-                if trailers != nil {
-                    self.trailers = trailers
-                } else {
-                    // show trailer download error
+                DispatchQueue.main.async {
+                    if trailers != nil {
+                        self.trailers = trailers!
+                        self.trailerCollectionView.reloadData()
+                    } else {
+                        // show trailer download error
+                    }
                 }
             }
         }
@@ -128,6 +133,20 @@ class DetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+}
+
+extension DetailViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return trailers.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrailerCollectionViewCell", for: indexPath) as! TrailerCollectionViewCell
+        
+        return cell
     }
     
 }

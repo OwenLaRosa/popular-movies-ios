@@ -166,7 +166,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrailerCollectionViewCell" id="ibZ-Ne-jIe" customClass="TrailerCollectionViewCell" customModule="Popular_Movies" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TrailerCollectionViewCell" reuseIdentifier="TrailerCollectionViewCell" id="ibZ-Ne-jIe" customClass="TrailerCollectionViewCell" customModule="Popular_Movies" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="81"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -193,6 +193,9 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="iS7-2c-6G8" id="KGq-8e-VCY"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <constraints>
@@ -250,6 +253,7 @@
                         <outlet property="ratingTextView" destination="kQb-fS-r4o" id="Dyk-8s-Act"/>
                         <outlet property="scrollView" destination="N4y-sY-xCJ" id="En1-Pl-agB"/>
                         <outlet property="titleLabel" destination="JhO-ts-Pw7" id="CLk-UR-xHb"/>
+                        <outlet property="trailerCollectionView" destination="C0B-da-7as" id="ysT-gn-az4"/>
                         <outlet property="yearLabel" destination="BPC-qa-Tqb" id="g3H-dM-djR"/>
                     </connections>
                 </viewController>
