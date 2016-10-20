@@ -154,8 +154,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C0B-da-7as">
-                                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C0B-da-7as">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="81" id="hpl-vj-1K6"/>
                                         </constraints>
@@ -173,12 +173,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="144" height="81"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PyR-ny-QT9"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PyR-ny-QT9"/>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwF-8N-y28">
                                                             <state key="normal" title="Play"/>
                                                         </button>
                                                     </subviews>
                                                 </view>
+                                                <color key="backgroundColor" red="0.72628045080000003" green="0.72629773620000004" blue="0.72628843779999996" alpha="1" colorSpace="deviceRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="DwF-8N-y28" firstAttribute="centerY" secondItem="PyR-ny-QT9" secondAttribute="centerY" id="6D0-Do-dQF"/>
                                                     <constraint firstItem="DwF-8N-y28" firstAttribute="centerX" secondItem="ibZ-Ne-jIe" secondAttribute="centerX" id="DAM-Y6-zlY"/>
