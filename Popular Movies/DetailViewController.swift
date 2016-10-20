@@ -31,6 +31,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var movie: Movie!
+    var trailers: [Trailer]!
+    var trailerDownloadTask: URLSessionTask?
+    var reviews: [Review]!
+    var reviewDownloadTask: URLSessionTask?
+    var client = TMDBClient()
     
     //
     private var downloadTask: URLSessionTask!
@@ -47,6 +52,10 @@ class DetailViewController: UIViewController {
         descriptionLabel.text = movie.overview
         
         downloadPoster()
+        
+        // fetch trailers and reviews asynchronously
+        downloadTrailers()
+        downloadReviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,6 +101,30 @@ class DetailViewController: UIViewController {
                             self.posterImageView.image = image
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    func downloadTrailers() {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+            self.trailerDownloadTask = self.client.getTrailersForMovieId(id: self.movie.id) {trailers, error in
+                if trailers != nil {
+                    self.trailers = trailers
+                } else {
+                    // show trailer download error
+                }
+            }
+        }
+    }
+    
+    func downloadReviews() {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+            self.reviewDownloadTask = self.client.getReviewsForMovieId(id: self.movie.id) {reviews, error in
+                if reviews != nil {
+                    self.reviews = reviews!
+                } else {
+                    // show review download error
                 }
             }
         }
