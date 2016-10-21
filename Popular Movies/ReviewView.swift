@@ -13,4 +13,12 @@ class ReviewView: UIView {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
+    @IBAction func toggleExpandedState(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Expand" {
+            sender.titleLabel?.text = "Collapse"
+        } else {
+            sender.titleLabel?.text = "Expand"
+        }
+    }
+    
 }
