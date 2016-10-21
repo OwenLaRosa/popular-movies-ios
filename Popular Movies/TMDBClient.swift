@@ -156,7 +156,7 @@ open class TMDBClient {
     /// Get reviews for movie id
     open func getReviewsForMovieId(id: Int, completionHandler: @escaping (_ reviews: [Review]?, _ error: Error?) -> Void) -> URLSessionTask! {
         let session = URLSession.shared
-        let urlString = "(RequestKeys.baseUrl)movie/\(id)/reviews?api_key=\(RequestKeys.apiKey)"
+        let urlString = "\(RequestKeys.baseUrl)movie/\(id)/reviews?api_key=\(RequestKeys.apiKey)"
         guard let url = URL(string: urlString) else {
             completionHandler(nil, TMDBErrors.invalidUrlError)
             return nil

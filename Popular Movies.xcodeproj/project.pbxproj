@@ -21,6 +21,8 @@
 		5AA05F061D1DD3EA00260827 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA05F051D1DD3EA00260827 /* Constants.swift */; };
 		5AB60DEB1DB90C7900D4CA2D /* TrailerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB60DEA1DB90C7900D4CA2D /* TrailerCollectionViewCell.swift */; };
 		5AE02F301D5FD5A70022AB6C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE02F2F1D5FD5A70022AB6C /* DetailViewController.swift */; };
+		5AE4156A1DBA92DB0061A864 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE415691DBA92DB0061A864 /* ReviewView.xib */; };
+		5AE4156C1DBA94AF0061A864 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE4156B1DBA94AF0061A864 /* ReviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		5AA05F051D1DD3EA00260827 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5AB60DEA1DB90C7900D4CA2D /* TrailerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5AE02F2F1D5FD5A70022AB6C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5AE415691DBA92DB0061A864 /* ReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
+		5AE4156B1DBA94AF0061A864 /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				5A855FFF1D1D7F50001F2D79 /* Assets.xcassets */,
 				5A8560011D1D7F50001F2D79 /* LaunchScreen.storyboard */,
 				5A8560041D1D7F50001F2D79 /* Info.plist */,
+				5AE415691DBA92DB0061A864 /* ReviewView.xib */,
+				5AE4156B1DBA94AF0061A864 /* ReviewView.swift */,
 			);
 			path = "Popular Movies";
 			sourceTree = "<group>";
@@ -151,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE4156A1DBA92DB0061A864 /* ReviewView.xib in Resources */,
 				5A8560031D1D7F50001F2D79 /* LaunchScreen.storyboard in Resources */,
 				5A8560001D1D7F50001F2D79 /* Assets.xcassets in Resources */,
 				5A855FFE1D1D7F50001F2D79 /* Main.storyboard in Resources */,
@@ -168,6 +175,7 @@
 				5A4FE3191D22E67D009F7DF4 /* TMDBClient.swift in Sources */,
 				5AB60DEB1DB90C7900D4CA2D /* TrailerCollectionViewCell.swift in Sources */,
 				5AA05F041D1DD22400260827 /* MovieModel.swift in Sources */,
+				5AE4156C1DBA94AF0061A864 /* ReviewView.swift in Sources */,
 				5A855FFB1D1D7F50001F2D79 /* MoviesViewController.swift in Sources */,
 				5A591D751D25580E0006DB17 /* MovieCollectionViewCell.swift in Sources */,
 				5A84D0801DB80A6900040836 /* ReviewModel.swift in Sources */,

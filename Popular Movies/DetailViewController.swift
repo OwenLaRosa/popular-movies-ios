@@ -130,10 +130,26 @@ class DetailViewController: UIViewController {
             self.reviewDownloadTask = self.client.getReviewsForMovieId(id: self.movie.id) {reviews, error in
                 if reviews != nil {
                     self.reviews = reviews!
+                    DispatchQueue.main.async {
+                        self.showReviews(reviews: self.reviews)
+                    }
+                    print(self.reviews)
                 } else {
+                    print("review download error: \(error)")
                     // show review download error
                 }
             }
+        }
+    }
+    
+    func showReviews(reviews: [Review]) {
+        for i in reviews {
+            let reviewView = Bundle.main.loadNibNamed("ReviewView", owner: self, options: nil)?.last as! ReviewView
+            // view should be same width as its container
+            reviewView.frame.size.width = reviewContainer.frame.size.width
+            reviewView.authorLabel.text = i.author
+            reviewView.contentLabel.text = i.content
+            reviewContainer.addSubview(reviewView)
         }
     }
     
