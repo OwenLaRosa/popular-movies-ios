@@ -32,6 +32,8 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var trailerCollectionView: UICollectionView!
     
+    @IBOutlet weak var reviewContainer: UIStackView!
+    
     var movie: Movie!
     var trailers = [Trailer]()
     var trailerDownloadTask: URLSessionTask?

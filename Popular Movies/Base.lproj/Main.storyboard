@@ -154,11 +154,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gx-KO-ac2">
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C0B-da-7as">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -206,20 +201,42 @@
                                             <outlet property="dataSource" destination="iS7-2c-6G8" id="KGq-8e-VCY"/>
                                         </connections>
                                     </collectionView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Videos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gx-KO-ac2">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNt-BI-PHe">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sXN-1r-F3K">
+                                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="144" id="kEI-gA-R99"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="99Y-u8-1Il" firstAttribute="leading" secondItem="cmF-AE-fcc" secondAttribute="leading" id="2UF-Sp-PpX"/>
                                     <constraint firstItem="EYB-fi-pul" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" id="4tY-xK-prM"/>
+                                    <constraint firstItem="sXN-1r-F3K" firstAttribute="top" secondItem="jNt-BI-PHe" secondAttribute="bottom" constant="8" symbolic="YES" id="50S-0v-aOZ"/>
                                     <constraint firstItem="99Y-u8-1Il" firstAttribute="top" secondItem="cmF-AE-fcc" secondAttribute="bottom" constant="8" symbolic="YES" id="5F5-NK-jsH"/>
                                     <constraint firstItem="kQb-fS-r4o" firstAttribute="top" secondItem="BPC-qa-Tqb" secondAttribute="bottom" constant="8" symbolic="YES" id="5zg-D1-XgA"/>
                                     <constraint firstItem="cmF-AE-fcc" firstAttribute="top" secondItem="BPC-qa-Tqb" secondAttribute="top" id="6V5-rM-VWX"/>
                                     <constraint firstItem="2gx-KO-ac2" firstAttribute="top" secondItem="99Y-u8-1Il" secondAttribute="bottom" constant="7.6666666666666856" id="7y3-F4-Eca"/>
                                     <constraint firstItem="BPC-qa-Tqb" firstAttribute="leading" secondItem="cmF-AE-fcc" secondAttribute="trailing" constant="28" id="BgQ-to-Kvz"/>
+                                    <constraint firstItem="sXN-1r-F3K" firstAttribute="top" secondItem="jNt-BI-PHe" secondAttribute="bottom" constant="8" id="DIJ-57-9AH"/>
+                                    <constraint firstItem="sXN-1r-F3K" firstAttribute="top" secondItem="jNt-BI-PHe" secondAttribute="bottom" constant="8" id="EDU-he-XVJ"/>
+                                    <constraint firstItem="sXN-1r-F3K" firstAttribute="centerX" secondItem="N4y-sY-xCJ" secondAttribute="centerX" id="EeX-7o-5oD"/>
                                     <constraint firstItem="C0B-da-7as" firstAttribute="centerX" secondItem="N4y-sY-xCJ" secondAttribute="centerX" id="JVP-ve-l2w"/>
                                     <constraint firstAttribute="trailing" secondItem="BPC-qa-Tqb" secondAttribute="trailing" constant="14" id="NZg-fl-EBa"/>
+                                    <constraint firstItem="jNt-BI-PHe" firstAttribute="top" secondItem="C0B-da-7as" secondAttribute="bottom" constant="8" id="Nbj-8i-fTU"/>
                                     <constraint firstItem="cmF-AE-fcc" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" constant="14" id="OQv-js-C2x"/>
                                     <constraint firstItem="kQb-fS-r4o" firstAttribute="leading" secondItem="imB-iw-afm" secondAttribute="leading" id="Owc-pl-26p"/>
                                     <constraint firstItem="BPC-qa-Tqb" firstAttribute="trailing" secondItem="kQb-fS-r4o" secondAttribute="trailing" id="PVC-Fm-mzG"/>
+                                    <constraint firstItem="jNt-BI-PHe" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" constant="14" id="RmP-st-QAQ"/>
                                     <constraint firstItem="cmF-AE-fcc" firstAttribute="top" secondItem="N4y-sY-xCJ" secondAttribute="topMargin" id="V1D-O6-t3I"/>
                                     <constraint firstAttribute="bottom" secondItem="EYB-fi-pul" secondAttribute="bottom" constant="-122" id="VXh-HY-3Tr"/>
                                     <constraint firstAttribute="trailing" secondItem="C0B-da-7as" secondAttribute="trailing" constant="14" id="WGW-Gf-MpR"/>
@@ -228,8 +245,10 @@
                                     <constraint firstItem="C0B-da-7as" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" constant="14" id="ff6-tS-i9h"/>
                                     <constraint firstItem="99Y-u8-1Il" firstAttribute="centerX" secondItem="N4y-sY-xCJ" secondAttribute="centerX" id="iMi-7p-gNT"/>
                                     <constraint firstItem="BPC-qa-Tqb" firstAttribute="leading" secondItem="kQb-fS-r4o" secondAttribute="leading" id="nXA-dJ-NRz"/>
+                                    <constraint firstItem="sXN-1r-F3K" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" constant="14" id="rEu-OQ-YRq"/>
                                     <constraint firstItem="2gx-KO-ac2" firstAttribute="leading" secondItem="N4y-sY-xCJ" secondAttribute="leading" constant="14" id="sd8-rG-bVN"/>
                                     <constraint firstItem="EYB-fi-pul" firstAttribute="top" secondItem="N4y-sY-xCJ" secondAttribute="top" constant="672" id="tJc-qA-URB"/>
+                                    <constraint firstAttribute="trailing" secondItem="sXN-1r-F3K" secondAttribute="trailing" constant="14" id="zfc-hv-OhU"/>
                                 </constraints>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhO-ts-Pw7">
@@ -262,6 +281,7 @@
                         <outlet property="favoriteButton" destination="imB-iw-afm" id="hac-iW-c32"/>
                         <outlet property="posterImageView" destination="cmF-AE-fcc" id="lCA-uh-dGZ"/>
                         <outlet property="ratingTextView" destination="kQb-fS-r4o" id="Dyk-8s-Act"/>
+                        <outlet property="reviewContainer" destination="sXN-1r-F3K" id="Z1N-76-B2o"/>
                         <outlet property="scrollView" destination="N4y-sY-xCJ" id="En1-Pl-agB"/>
                         <outlet property="titleLabel" destination="JhO-ts-Pw7" id="CLk-UR-xHb"/>
                         <outlet property="trailerCollectionView" destination="C0B-da-7as" id="ysT-gn-az4"/>
