@@ -148,6 +148,9 @@ extension DetailViewController: UICollectionViewDataSource {
         
         let trailer = trailers[indexPath.row]
         
+        // set video link for when play button is pressed
+        cell.videoUrl = trailer.videoUrl
+        
         if let image = ImageCache().imageWithIdentifier(trailer.thumbnailUrl) {
             cell.thumbnail.image = image
         } else {

@@ -176,6 +176,9 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PyR-ny-QT9"/>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwF-8N-y28">
                                                             <state key="normal" title="Play"/>
+                                                            <connections>
+                                                                <action selector="playButtonTapped:" destination="ibZ-Ne-jIe" eventType="touchUpInside" id="v15-if-cfB"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </view>

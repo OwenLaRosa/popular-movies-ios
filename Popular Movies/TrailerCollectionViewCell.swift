@@ -10,8 +10,16 @@ import UIKit
 
 class TrailerCollectionViewCell: UICollectionViewCell {
     
+    var videoUrl = ""
+    
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var playButton: UIButton!
+    
+    @IBAction func playButtonTapped(_ sender: UIButton) {
+        if let url = URL(string: videoUrl) {
+            UIApplication.shared.openURL(url)
+        }
+    }
     
     var dataTask: URLSessionTask? {
         didSet {

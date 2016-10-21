@@ -24,4 +24,8 @@ open class Trailer {
         return "https://img.youtube.com/vi/\(key)/0.jpg"
     }
     
+    var videoUrl: String {
+        return "https://www.youtube.com/watch?v=\(key)"
+    }
+    
 }
